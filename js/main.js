@@ -125,7 +125,7 @@ document.addEventListener("DOMContentLoaded", () => {
     updateLastUpdatedDate();
   }
 
-  // 新着情報: イベント日から10日以上経過した項目を自動で非表示
+  // 新着情報: 開催日の翌日になった項目を自動で非表示
   const newsList = document.querySelector("[data-news-list]");
   const newsItems = document.querySelectorAll("[data-news-item][data-event-date]");
   const newsEmpty = document.querySelector("[data-news-empty]");
@@ -145,7 +145,7 @@ document.addEventListener("DOMContentLoaded", () => {
       const eventDate = new Date(parts[0], parts[1] - 1, parts[2]);
       eventDate.setHours(0, 0, 0, 0);
       const diffDays = Math.floor((today.getTime() - eventDate.getTime()) / (1000 * 60 * 60 * 24));
-      const isExpired = diffDays >= 10;
+      const isExpired = diffDays >= 1;
 
       if (isExpired) {
         item.classList.add("hidden");

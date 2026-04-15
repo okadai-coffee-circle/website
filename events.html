@@ -529,7 +529,7 @@
                   </div>
                   <div class="legend-item" data-type="cafe-tour">
                     <span class="legend-dot" style="background-color: #eab308;"></span>
-                    <span class="legend-label">出店・販売</span>
+                    <span class="legend-label">カフェ巡り</span>
                   </div>
                   <div class="legend-item" data-type="event">
                     <span class="legend-dot" style="background-color: #dc2626;"></span>
@@ -666,7 +666,7 @@
           badge: "bg-[#2563EB] text-white transition hover:bg-[#1D4ED8]",
         },
         "cafe-tour": {
-          label: "出店・販売",
+          label: "カフェ巡り",
           color: "#EAB308",
           icon: "🚶",
           badge: "bg-[#EAB308] text-white transition hover:bg-[#CA8A04]",
@@ -702,7 +702,7 @@
           date: "2026-04-16",
           type: "regular",
           title: "ラテアート・ハンドドリップ体験会",
-          time: "18:00〜20:00",
+          time: "16:00〜21:00",
           location: "ツドイバ（岡山県岡山市北区奉還町4丁目12-22 1F）",
           mapUrl:
             "https://www.google.co.jp/maps/place/%E3%82%B7%E3%82%A7%E3%82%A2%E3%82%B7%E3%83%A7%E3%83%83%E3%83%97+%E3%83%84%E3%83%89%E3%82%A4%E3%83%90/@34.6688777,133.9087443,17z/data=!3m2!4b1!5s0x35540653970849af:0x7184915536464cdd!4m6!3m5!1s0x355407ed44a439ff:0xc537a63e98cb29be!8m2!3d34.6688777!4d133.9113192!16s%2Fg%2F11rrzpy3v8?hl=en&entry=ttu&g_ep=EgoyMDI2MDMyMi4wIKXMDSoASAFQAw%3D%3D",
@@ -722,6 +722,51 @@
           signup: "参加費無料・当日参加OK・入退室自由",
           image: "images/イベント/知るカフェ.png",
         },
+        {
+          date: "2026-05-09",
+          type: "cafe-tour",
+          title: "カフェ巡り",
+          time: "13:00〜",
+          location: "岡山駅東口集合",
+          description:
+            "3〜4名の班を組んでそれぞれカフェ巡りを楽しみます。終了後は各自解散の自由参加型イベントです。",
+          signup: "参加費無料・事前連絡歓迎",
+          image: "images/イベント/岡山駅.jpg",
+        },
+        {
+          date: "2026-05-14",
+          type: "regular",
+          title: "ラテアート・ハンドドリップ体験会",
+          time: "18:00〜20:00",
+          location: "ツドイバ（岡山県岡山市北区奉還町4丁目12-22 1F）",
+          mapUrl:
+            "https://www.google.co.jp/maps/place/%E3%82%B7%E3%82%A7%E3%82%A2%E3%82%B7%E3%83%A7%E3%83%83%E3%83%97+%E3%83%84%E3%83%89%E3%82%A4%E3%83%90/@34.6688777,133.9087443,17z/data=!3m2!4b1!5s0x35540653970849af:0x7184915536464cdd!4m6!3m5!1s0x355407ed44a439ff:0xc537a63e98cb29be!8m2!3d34.6688777!4d133.9113192!16s%2Fg%2F11rrzpy3v8?hl=en&entry=ttu&g_ep=EgoyMDI2MDMyMi4wIKXMDSoASAFQAw%3D%3D",
+          description: "ラテアートとハンドドリップを実際に体験する定例会です。",
+          signup: "参加費無料・当日参加OK・入退室自由",
+          image: "images/イベント/ツドイバ.webp",
+        },
+        {
+          date: "2026-05-23",
+          type: "event",
+          title: "Japan Coffee Festival 出店",
+          time: "終日",
+          location: "JR吹田駅前",
+          description:
+            "テーマは「大学生が表現するスペシャリティコーヒーを飲み比べる」。学生ならではの視点でセレクトしたコーヒーを楽しめます。",
+          signup: "出張出店に興味のあるメンバー募集中！見学歓迎",
+          image: "images/coming-soon.svg",
+        },
+        {
+          date: "2026-05-24",
+          type: "event",
+          title: "Japan Coffee Festival 出店",
+          time: "終日",
+          location: "JR吹田駅前",
+          description:
+            "出店2日目も「大学生が表現するスペシャリティコーヒーを飲み比べる」をテーマに、個性ある味わいを提供します。",
+          signup: "出張出店に興味のあるメンバー募集中！見学歓迎",
+          image: "images/coming-soon.svg",
+        },
       ];
 
       const calendarGrid = document.getElementById("calendar-grid");
@@ -738,7 +783,8 @@
       const formatMonth = (date) => `${date.getFullYear()}年 ${date.getMonth() + 1}月`;
       const formatDateLabel = (date) =>
         `${date.getFullYear()}年${date.getMonth() + 1}月${date.getDate()}日`;
-      const EVENT_DETAILS_VISIBLE_DAYS_AFTER_END = 10;
+      // 開催翌日になった時点でイベント詳細からは非表示にする
+      const EVENT_DETAILS_VISIBLE_DAYS_AFTER_END = 0;
 
       const toDateKey = (date) => {
         const year = date.getFullYear();
