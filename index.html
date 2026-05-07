@@ -154,6 +154,12 @@
         display: flex;
         flex-direction: column;
       }
+      .highlight-item-fullrow {
+        grid-column: 1 / -1;
+        max-width: calc((100% - 32px) / 2);
+        width: 100%;
+        margin: 0 auto;
+      }
       .highlight-image {
         width: 100%;
         margin-bottom: 20px;
@@ -213,6 +219,9 @@
           grid-template-columns: repeat(2, 1fr);
           gap: 32px 16px;
         }
+        .highlight-item-fullrow {
+          max-width: calc((100% - 16px) / 2);
+        }
         .highlight-image {
           margin-bottom: 12px;
           border-radius: 8px;
@@ -233,6 +242,9 @@
         }
         .highlights-grid {
           gap: 24px 12px;
+        }
+        .highlight-item-fullrow {
+          max-width: calc((100% - 12px) / 2);
         }
         .highlight-title {
           font-size: 17px;
@@ -566,6 +578,19 @@
                 </h3>
                 <p class="highlight-description">
                   プロの焙煎を見学し、豆が香り立つ瞬間を体感します。
+                </p>
+              </div>
+            </div>
+
+            <!-- アイテム5 -->
+            <div class="highlight-item highlight-item-fullrow">
+              <div class="highlight-image">
+                <img src="images/ハンドドリップ講習会.jpg" alt="ハンドドリップ講習会の様子" />
+              </div>
+              <div class="highlight-content">
+                <h3 class="highlight-title">ハンドドリップ講習会</h3>
+                <p class="highlight-description">
+                  抽出の基本を実践しながら、湯温や注ぎ方で変わる味わいを体験します。
                 </p>
               </div>
             </div>
