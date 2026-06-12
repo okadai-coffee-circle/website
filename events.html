@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="ja">
   <head>
+    <meta name="description" content="岡山大学の珈琲サークル「ゆげ」の公式ウェブサイトです。初心者からコーヒー好きまで、一杯のコーヒーから始まる温かい時間を一緒に楽しみませんか？">
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>イベントスケジュール | 岡山大学 珈琲サークル「ゆげ」</title>
@@ -505,6 +506,12 @@
                   <button type="button" class="filter-button rounded-full bg-white px-3 py-1 text-xs font-semibold text-primary" data-filter="regular">
                     定例会
                   </button>
+                  <button type="button" class="filter-button rounded-full bg-white px-3 py-1 text-xs font-semibold text-primary" data-filter="event">
+                    特別イベント
+                  </button>
+                  <button type="button" class="filter-button rounded-full bg-white px-3 py-1 text-xs font-semibold text-primary" data-filter="cafe-tour">
+                    カフェ巡り
+                  </button>
                 </div>
               </div>
             </div>
@@ -765,6 +772,39 @@
           description:
             "出店2日目も「大学生が表現するスペシャリティコーヒーを飲み比べる」をテーマに、個性ある味わいを提供します。",
           signup: "出張出店に興味のあるメンバー募集中！見学歓迎",
+          image: "images/coming-soon.svg",
+        },
+        {
+          date: "2026-06-11",
+          type: "regular",
+          title: "第6回定例会",
+          time: "18:00～20:00",
+          location: "岡山県生涯学習センター 情報・創作棟4階 中研修室",
+          description:
+            "Japan Coffee Festivalに出店した大学のコーヒー豆を飲み比べします。",
+          signup: "参加費無料・当日参加OK・入退室自由",
+          image: "images/定期活動/定期活動2.jpg",
+        },
+        {
+          date: "2026-06-20",
+          type: "cafe-tour",
+          title: "カフェ巡り",
+          time: "13:00〜",
+          location: "岡山駅東口集合",
+          description:
+            "3〜4名の班を組んでそれぞれカフェ巡りを楽しみます。終了後は各自解散の自由参加型イベントです。",
+          signup: "参加費無料・事前連絡歓迎",
+          image: "images/イベント/岡山駅.jpg",
+        },
+        {
+          date: "2026-06-27",
+          type: "event",
+          title: "Ho.kuru への出店",
+          time: "時間未定",
+          location: "レンタルスペースHo.kuru",
+          description:
+            "レンタルスペースHo.kuruにて出店を行います。",
+          signup: "出店に興味のあるメンバー募集中！見学歓迎",
           image: "images/coming-soon.svg",
         },
       ];
@@ -1092,7 +1132,14 @@
         const list = document.createElement("div");
         list.className = "space-y-3";
 
-        const sortedEvents = [...events].sort((a, b) => a.date.localeCompare(b.date));
+        const currentYear = currentMonth.getFullYear();
+        const currentMonthStr = String(currentMonth.getMonth() + 1).padStart(2, "0");
+        const monthPrefix = `${currentYear}-${currentMonthStr}`;
+
+        const sortedEvents = [...events]
+          .filter(event => event.date.startsWith(monthPrefix))
+          .sort((a, b) => a.date.localeCompare(b.date));
+
         sortedEvents.forEach((event) => {
           if (activeFilter !== "all" && event.type !== activeFilter) {
             return;
@@ -1164,11 +1211,13 @@
       document.getElementById("prev-month").addEventListener("click", () => {
         currentMonth = new Date(currentMonth.getFullYear(), currentMonth.getMonth() - 1, 1);
         renderCalendar();
+        renderListView();
       });
 
       document.getElementById("next-month").addEventListener("click", () => {
         currentMonth = new Date(currentMonth.getFullYear(), currentMonth.getMonth() + 1, 1);
         renderCalendar();
+        renderListView();
       });
 
       document.querySelectorAll(".filter-button").forEach((button) => {
